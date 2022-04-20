@@ -15,6 +15,7 @@ LABEL maintainer "thyrlian@gmail.com"
 # install essential tools
 # install Qt
 ARG JDK_VERSION=11
+COPY sources.list /etc/apt
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get dist-upgrade -y && \
