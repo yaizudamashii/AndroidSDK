@@ -53,7 +53,8 @@ RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools && \
     rm *tools*linux*.zip
 
 # set the environment variables
-ENV JAVA_HOME /usr/lib/jvm/java-${JDK_VERSION}-openjdk-amd64
+ARG TARGETARCH
+ENV JAVA_HOME /usr/lib/jvm/java-${JDK_VERSION}-openjdk-${TARGETARCH}
 ENV GRADLE_HOME /opt/gradle
 ENV KOTLIN_HOME /opt/kotlinc
 ENV PATH ${PATH}:${GRADLE_HOME}/bin:${KOTLIN_HOME}/bin:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/cmdline-tools/tools/bin:${ANDROID_SDK_ROOT}/platform-tools:${ANDROID_SDK_ROOT}/emulator
