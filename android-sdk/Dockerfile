@@ -64,6 +64,11 @@ ENV LD_LIBRARY_PATH ${ANDROID_SDK_ROOT}/emulator/lib64:${ANDROID_SDK_ROOT}/emula
 # https://doc.qt.io/qt-5/qtwebengine-platform-notes.html#sandboxing-support
 ENV QTWEBENGINE_DISABLE_SANDBOX 1
 
+# Add the test emulator to the container
+COPY example-emulator/test.ini /root/.android/avd/test.ini
+COPY example-emulator/config.ini /root/.android/avd/test.avd/config.ini
+COPY example-emulator/advancedFeatures.ini /root/.android/advancedFeatures.ini
+
 # accept the license agreements of the SDK components
 ADD license_accepter.sh /opt/
 RUN chmod +x /opt/license_accepter.sh && /opt/license_accepter.sh $ANDROID_SDK_ROOT
